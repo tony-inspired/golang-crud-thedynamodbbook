@@ -5,7 +5,7 @@ import (
 	"github.com/go-chi/chi/middleware"
 	ServerConfig "crud_app_thedynamodbbook/config"
 	HealthHandler "crud_app_thedynamodbbook/internal/handlers/health"
-	ProductHandler "crud_app_thedynamodbbook/internal/handlers/product"
+	StudentHandler "crud_app_thedynamodbbook/internal/handlers/student"
 	"crud_app_thedynamodbbook/internal/repository/adapter"
 )
 
@@ -25,7 +25,7 @@ func (r *Router) SetRouters(repository adapter.Interface) *chi.Mux {
 	r.setConfigsRouters()
 
 	r.RouterHealth(repository)
-	r.RouterProduct(repository)
+	r.RouterStudent(repository)
 
 	return r.router
 }
@@ -51,10 +51,10 @@ func (r *Router) RouterHealth(repository adapter.Interface) {
 	})
 }
 
-func (r *Router) RouterProduct(repository adapter.Interface) {
-	handler := ProductHandler.NewHandler(repository)
+func (r *Router) RouterStudent(repository adapter.Interface) {
+	handler := StudentHandler.NewHandler(repository)
 
-	r.router.Route("/product", func(route chi.Router) {
+	r.router.Route("/student", func(route chi.Router) {
 		route.Post("/", handler.Post)
 		route.Get("/", handler.Get)
 		route.Get("/{ID}", handler.Get)

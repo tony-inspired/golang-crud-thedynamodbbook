@@ -6,7 +6,7 @@ import (
 	"crud_app_thedynamodbbook/internal/repository/instance"
 	"crud_app_thedynamodbbook/internal/routes"
 	"crud_app_thedynamodbbook/internal/rules"
-	RulesProduct "crud_app_thedynamodbbook/internal/rules/product"
+	RulesStudent "crud_app_thedynamodbbook/internal/rules/student"
 	"crud_app_thedynamodbbook/utils/logger"
 	"fmt"
 	"log"
@@ -42,7 +42,7 @@ func main() {
 func Migrate(connection *dynamodb.DynamoDB) []error {
 	var errors []error
 
-	callMigrateAndAppendError(&errors, connection, &RulesProduct.Rules{})
+	callMigrateAndAppendError(&errors, connection, &RulesStudent.Rules{})
 
 	return errors
 }

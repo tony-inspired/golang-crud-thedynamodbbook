@@ -68,7 +68,6 @@ func (db *Database) CreateOrUpdate(entity interface{}, tableName string) (respon
 	return db.connection.PutItem(input)
 }
 
-// pake condition karena dia harus nyari 1 data
 func (db *Database) Delete(condition map[string]interface{}, tableName string) (response *dynamodb.DeleteItemOutput, err error) {
 	conditionParsed, err := dynamodbattribute.MarshalMap(condition)
 	if err != nil {
