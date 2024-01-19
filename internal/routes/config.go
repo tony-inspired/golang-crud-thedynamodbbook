@@ -14,14 +14,6 @@ func NewConfig() *Config{
 	return &Config{}
 }
 
-//нам надо задать корс, а у него есть .Handler(next)
-//поэтому наш метод принимает next http.Handler
-
-/*
- вызов cors.New(...).Handler(next) создает новый HTTP-обработчик, 
- который интегрирует настройки CORS, заданные в cors.Options, 
- в обработку HTTP-запроса
-*/
 func (c *Config) Cors(next http.Handler) http.Handler{
 	return cors.New(cors.Options{
 		AllowedOrigins: []string{"*"},
