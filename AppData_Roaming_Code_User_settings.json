@@ -1,0 +1,14 @@
+{
+    "[typescript]": {},
+    "go.languageServerFlags": [
+        
+    ],
+    "[go]": {
+
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": false
+        },
+    },
+    "go.formatTool": "gofmt",
+}
